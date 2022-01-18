@@ -1,0 +1,17 @@
+.card-header
+  h2
+    | Login
+.card-body
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .row.form-group
+      .col-md-6
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+    .row.form-group
+      .col-md-6
+        = f.label :password
+        br
+        = f.password_field :password, autocomplete: "current-password", class: 'form-control'
+    .actions
+      = f.submit "Log in", class: 'btn btn-primary'
