@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_182934) do
+ActiveRecord::Schema.define(version: 2022_01_18_184237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_182934) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "description"
-    t.string "status"
+    t.integer "status", default: 1
     t.float "total_transaction_sum"
     t.string "type"
     t.integer "admin_id"
