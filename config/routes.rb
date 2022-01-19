@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   root to: 'home#index'
   devise_for :users
 
-  resources :merchants, except: [:create]
-
+  resources :merchants, except: %i[new create] do
+    member do
+      get :transaction_history
+    end
+  end
+  
   namespace :api do
     namespace :v1 do
       resources :transactions, only: [:create] do
@@ -17,3 +21,6 @@ Rails.application.routes.draw do
     end
   end  
 end
+
+
+

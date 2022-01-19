@@ -11,6 +11,9 @@
       p
         | Here you can check the list of created merchants and perform edit & delete operations on the same.
       - if user_signed_in?
-        = link_to 'Merchants', merchants_path, class: 'btn btn-info pull-left'
+        - if current_user.is_a?(Admin)
+          = link_to 'Merchants', merchants_path, class: 'btn btn-info pull-left'
+        - else
+          = link_to 'Merchant', merchant_path(current_user), class: 'btn btn-info pull-left'
       - else
         = link_to 'Login', new_user_session_path, class: 'btn btn-info pull-left'

@@ -4,6 +4,7 @@ class Api::V1::AccountController < ApplicationController
   include ResponseHandler
   include ExceptionHandler
 
+
   def authenticate
     user = User.find_by(email: params[:email])
     if user&.valid_password?(params[:password])

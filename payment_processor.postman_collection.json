@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "b54c840c-430e-4f67-a8f0-b1694f83692f",
+		"name": "payment_processor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authenticate user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "merchant1@yopmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "merchant1@pass123",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uX3RpbWUiOjg2NDAwLCJ1c2VyX2lkIjo1fQ.4Mv7EKYCWQHUAG0C-o2T2JjTdjqAgXIekPak_IT0BSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "transaction[amount]",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "transaction[customer_email]",
+							"value": "test@yopmail.com",
+							"type": "default"
+						},
+						{
+							"key": "transaction[customer_phone]",
+							"value": "1234567897",
+							"type": "default"
+						},
+						{
+							"key": "transaction['amount']",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "transaction[amount]",
+							"value": "1000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "charge transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uX3RpbWUiOjg2NDAwLCJ1c2VyX2lkIjo1fQ.4Mv7EKYCWQHUAG0C-o2T2JjTdjqAgXIekPak_IT0BSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "transaction[amount]",
+							"value": "100",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/transactions/1/charge_transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"transactions",
+						"1",
+						"charge_transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refund transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHBpcmF0aW9uX3RpbWUiOjg2NDAwLCJ1c2VyX2lkIjo1fQ.4Mv7EKYCWQHUAG0C-o2T2JjTdjqAgXIekPak_IT0BSo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "transaction[amount]",
+							"value": "100",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/transactions/2/refund_transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"transactions",
+						"2",
+						"refund_transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reversal transction",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/transactions/1/reversal_transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"transactions",
+						"1",
+						"reversal_transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
