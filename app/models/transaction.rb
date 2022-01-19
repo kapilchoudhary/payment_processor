@@ -3,6 +3,7 @@ class Transaction < ApplicationRecord
   enum status: %i[approved reversed refunded error]
 
   validates_presence_of :customer_email, :customer_phone
+  scope :last_one_hours, -> { where(created_at < 1.hours.ago)}
 
   after_initialize :set_uuid
 

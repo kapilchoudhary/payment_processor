@@ -7,7 +7,7 @@ nav.navbar.navbar-expand-lg.bg-dark[role="navigation"]
         = link_to 'Home', root_path, class: "nav-link text-white"
       - if user_signed_in?
         li.nav-item
-          = link_to 'Logout', destroy_user_session_path, class: "nav-link text-white", method: :delete
+          = link_to 'Logout', destroy_user_session_path, :method => :delete, class: "nav-link text-white"
       - else
         li.nav-item
           = link_to 'Login', new_user_session_path, class: "nav-link text-white"
