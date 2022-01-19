@@ -5,20 +5,29 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version ruby-2.6.5
 
-* System dependencies
+* Rails version 6
 
-* Configuration
+* Run below commants in sequense to setup project
+  * bundle install 
+  * yarn
+
+Note: Use nvm version 14.17.4  
 
 * Database creation
+  rake db:create
 
 * Database initialization
+  rake db:migrate
 
-* How to run the test suite
+* Start the server
+  rails server
+  
+* To import admins  
+  rake import:admins
 
-* Services (job queues, cache servers, search engines, etc.)
+* To import merchants
+  rake import:merchants  
 
-* Deployment instructions
-
-* ...
+Note: I have added postman collection file for testing, Please have a look on it for api request payment_processor.postman_collection.json
